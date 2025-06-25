@@ -2,20 +2,22 @@ class Solution {
 public:
     int minLength(string s) {
 
-        s.push_back('*');
-        int n = s.size();
-        for (int i = 0; i < n; i++) {
 
-            if (s[i] == 'B'  && s.back() == 'A') {
-                s.pop_back();
+        int last = 0;
+        for (int i = 0; i < s.size(); i++) {
+
+            if (s[i] == 'B'  && last && s[last-1] == 'A') {
+                last--;
             }
-            else if (s[i] == 'D'  && s.back() == 'C') {
-                s.pop_back();
+            else if (s[i] == 'D'  && last && s[last-1] == 'C') {
+               last--;
             }
 
-            else
-                s.push_back(s[i]);
+            else{
+                s[last] = s[i] ;
+                last++;
+                }
         }
-        return s.size() - n - 1;
+        return last;
     }
 };
