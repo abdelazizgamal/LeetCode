@@ -2,18 +2,20 @@ class Solution {
 public:
     int minLength(string s) {
 
-        vector<char> ans ;
-        for(int i = 0; i < s.size(); i++){
-            
-            if (s[i] == 'B' && ans.size() &&ans[ans.size()-1] == 'A') {
-                ans.pop_back();
+        s.push_back('*');
+        int n = s.size();
+        for (int i = 0; i < n; i++) {
+
+            if (s[i] == 'B'  && s.back() == 'A') {
+                s.pop_back();
             }
-            else if (s[i] == 'D'&& ans.size() && ans[ans.size()-1] == 'C'){
-                ans.pop_back();
+            else if (s[i] == 'D'  && s.back() == 'C') {
+                s.pop_back();
             }
-            
-            else ans.push_back(s[i]);
+
+            else
+                s.push_back(s[i]);
         }
-        return ans.size();
+        return s.size() - n - 1;
     }
 };
