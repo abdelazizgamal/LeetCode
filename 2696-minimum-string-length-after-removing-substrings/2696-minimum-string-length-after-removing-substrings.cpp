@@ -2,20 +2,20 @@ class Solution {
 public:
     int minLength(string s) {
 
-        size_t pos1 = s.find("AB");
-        size_t pos2 = s.find("CD");
-        bool flag1 = (pos1 != string::npos), flag2 = (pos2 != string::npos);
-        while(flag1 || flag2)
-        {
-            if(flag1){
-                s.erase(pos1,2);
+        vector<char> ans ;
+        for(int i = 0; i < s.size(); i++){
+            if(ans.size()> 0 ){
+                if (s[i] == 'B' && ans[ans.size()-1] == 'A') {
+                    ans.pop_back();
+                    continue;
+                }
+                else if (s[i] == 'D' && ans[ans.size()-1] == 'C'){
+                    ans.pop_back();
+                    continue;
+                }
             }
-            else if(flag2) s.erase(pos2,2);
-            pos1 = s.find("AB");
-            pos2 = s.find("CD");
-            flag1 = (pos1 != string::npos), flag2 = (pos2 != string::npos);
+            ans.push_back(s[i]);
         }
-        cout<< s;
-        return s.size();
+        return ans.size();
     }
 };
