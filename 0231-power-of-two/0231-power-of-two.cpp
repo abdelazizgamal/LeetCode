@@ -1,11 +1,15 @@
 class Solution {
 public:
     bool isPowerOfTwo(int n) {
-        long sum = 1;
-        for(int i = 0; i < 32; i++){
-            if (n == sum) return 1;
-            else sum *= 2;
+        bool flag = 0;
+        for (int i = 30; i >= 0; --i) {
+            if (((n >> 31) & 1) == 0){
+                if (flag == 1 and ((n >> i) & 1) == 1) return 0;
+                if (((n >> i) & 1) == 1)flag = !flag;
+
+            } 
+            
         }
-        return 0;
+        return flag;
     }
 };
