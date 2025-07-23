@@ -16,7 +16,7 @@ public:
             }
             if (s.size() < 1 || word.size() != pattern.size() ) return 0;
             for(int i = 0;  i < word.size(); i ++){
-                if (keys.find(pattern[i]) != keys.end()) {
+                if (keys.count(pattern[i]) > 0) {
                     if(keys[pattern[i]] != word[i]) return 0;
                 } else {
                     if(words[word[i]] >= 1){return  0;}
