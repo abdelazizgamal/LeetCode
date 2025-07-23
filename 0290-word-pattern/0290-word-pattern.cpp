@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
-            map<string, int> words; 
+            unordered_map<string, int> words; 
             vector<string> word;
-            map<char, string> keys;
+            unordered_map<char, string> keys;
             int j = 0;
             for(int i = 0;  i < s.size(); i ++){
                 string s2 = "";
