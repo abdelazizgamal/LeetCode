@@ -17,14 +17,14 @@ public:
                 while(p2 > p1){
                     if(map.count(s[p2])){
                         temp = s[p2];
-                        
+                        s[p2] =  s[p1];
+                        s[p1] = temp;
+                        p2--; 
                         break;
                     }
                     p2--;
                 }
-                s[p2] =  s[p1];
-                s[p1] = temp;
-                p2--; 
+                
             }
             p1++;
         }
