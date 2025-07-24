@@ -8,22 +8,45 @@ public:
         map['o'] = 1, map['O'] = 1;
         map['u'] = 1, map['U'] = 1;
 
-        int point = 0;
-        bool flag = 0;
+        
+        int p2 = s.size()-1, p1 = 0;
 
-        stack<char> stk;
+        while(p1 < s.size() && p1 < p2){
+            if(map.count(s[p1])){
+                char temp;
+                while(p2 > p1){
+                    if(map.count(s[p2])){
+                        temp = s[p2];
+                        
+                        break;
+                    }
+                    p2--;
+                }
+                s[p2] =  s[p1];
+                s[p1] = temp;
+                p2--; 
+            }
+            p1++;
+        }
+        //stack<char> stk;
+        // for(int i = 0; i <s.size(); i++){
+        //     if(map.count(s[i])){
+        //         if (!flag){
+        //             p1 =  i;
 
-        for(int i = 0; i <s.size(); i++){
-            if(map.count(s[i])){
-                stk.push(s[i]);
-            }
-        }
-        for(int i = 0; i <s.size(); i++){
-            if(map.count(s[i])){
-               s[i] = stk.top();
-               stk.pop();
-            }
-        }
+        //         }
+        //         else{
+        //             flag = true
+        //         }
+        //     }
+        // }
+
+        // for(int i = 0; i <s.size(); i++){
+        //     if(map.count(s[i])){
+        //        s[i] = stk.top();
+        //        stk.pop();
+        //     }
+        // }
         cout << s;
         return s;
     }
