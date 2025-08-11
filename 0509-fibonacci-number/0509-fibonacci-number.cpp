@@ -19,9 +19,9 @@ public:
     if (n == 0) return  0;
     int p = 0, c = 1, sum = 0;
     for(int i = 1 ; i < n  ; i ++){
-        sum = c + p;
-        p = c;
-        c = sum;
+        c = c + p;
+        p = c - p;
+        
     }
     return c;
     }
