@@ -17,7 +17,6 @@ public:
     // return arr[n -1] + arr[n - 2];
 
     if (n == 0) return  0;
-    if (n == 1) return 1;
     int p = 0, c = 1, sum = 0;
     for(int i = 1 ; i < n  ; i ++){
         sum = c + p;
