@@ -19,7 +19,7 @@ public:
     if (n == 0) return  0;
     if (n == 1) return 1;
     int p = 0, c = 1, sum = 0;
-    for(int i = 0 ; i < n - 1 ; i ++){
+    for(int i = 1 ; i < n  ; i ++){
         sum = c + p;
         p = c;
         c = sum;
