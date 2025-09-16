@@ -16,6 +16,7 @@ from sales s1
 where year = (select min(year) from sales 
                 where product_id = s1.product_id)*/
 -----------------------------------------------------------
+--using Joins for better performance 
 with ProductFirstYear as (
     select product_id, min(year)as first_year
     from sales
