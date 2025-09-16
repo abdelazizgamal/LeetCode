@@ -9,7 +9,19 @@
 -- from year_sales
 -- where rnk = 1
 -----------------------------------------------------------
-select s1.product_id , s1.year as first_year , s1.quantity, s1.price
+--correlated subquery
+--Simple but not scalable
+/*select s1.product_id , s1.year as first_year , s1.quantity, s1.price
 from sales s1
 where year = (select min(year) from sales 
-                where product_id = s1.product_id)
+                where product_id = s1.product_id)*/
+-----------------------------------------------------------
+with ProductFirstYear as (
+    select product_id, min(year)as first_year
+    from sales
+    group by product_id 
+)
+select pfy.product_id ,  first_year , s1.quantity, s1.price
+from ProductFirstYear pfy
+join sales s1
+on pfy.product_id = s1.product_id and first_year  = year
